@@ -99,7 +99,7 @@
                                         <li class="hidden-xs"><a href="wishlist.html">Wishlist</a></li>
                                         <li class="hidden-xs"><a href="cart.html">My Cart</a></li>
                                         <li class="hidden-xs"><a href="checkout.html">Checkout</a></li>
-                                        <li><a href="" data-toggle="modal" data-target="#login-modal">Login</a></li>
+                                        <li class="hidden-xs"><a href="/account/signin">登录</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -236,10 +236,10 @@
                 <div class="col-md-6">
                     <div class="aa-myaccount-area">         
                         <div class="aa-myaccount-login">
-                            <h4>登录</h4>
-                            <form action="signin" method="POST" class="aa-login-form">
+                            <h4>注册</h4>
+                            <form action="signup" method="POST" class="aa-login-form">
                                 {% csrf_token %}
-                                {% for field in form.visible_fields %}
+                                {% for field in form %}
                                 <div class="fieldWrapper">
                                     {{ field.label_tag  }}
                                     {{ field }}
@@ -248,11 +248,8 @@
                                     {% endfor %}
                                 </div>
                                 {% endfor %}
-                                {% for field in form.hidden_fields %}
-                                {{ field }}
-                                {% endfor %}
                                 <div style="color:red">{{ form.non_field_errors }}</div>
-                                <button type="submit" class="aa-browse-btn">登录</button>
+                                <button type="submit" class="aa-browse-btn">注册</button>
                             </form>
                         </div>
                     </div>

@@ -50,10 +50,10 @@ class SignupForm(forms.Form):
         super(SignupForm,self).clean()
         if len(self.errors)!=0:
             return
-        username=self.cleaned_data['username']
+        phone_number=self.cleaned_data['phone_number']
         try:
-            User.objects.get(username=username)
-            raise forms.ValidationError('此手机号已经注册。')
+            User.objects.get(username=phone_number)
         except:
             return
+        raise forms.ValidationError('此手机号已经注册。')
 
