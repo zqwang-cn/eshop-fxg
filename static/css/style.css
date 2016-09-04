@@ -1229,108 +1229,6 @@ img {
   background-color: #ff6600;
 }
 
-/*=== modal window ===*/
-
-#quick-view-modal .modal-dialog {
-  margin: 10% auto;
-  width: 800px;
-}
-#quick-view-modal .modal-content {
-  border-radius: 0;
-}
-#quick-view-modal .modal-content button.close {
-  margin-right: 10px;
-  -webkit-transition: all 0.5s;
-  -moz-transition: all 0.5s;
-  -ms-transition: all 0.5s;
-  -o-transition: all 0.5s;
-  transition: all 0.5s;
-}
-#quick-view-modal .modal-content button.close:hover {
-  opacity: 1;
-}
-#quick-view-modal .modal-content .aa-product-view-slider .simpleLens-container {
-  width: 100%;
-}
-#quick-view-modal .modal-content .aa-product-view-slider .simpleLens-container .simpleLens-big-image-container {
-  width: 100%;
-}
-#quick-view-modal .modal-content .aa-product-view-slider .simpleLens-container .simpleLens-big-image-container .simpleLens-lens-image {
-  width: 100%;
-}
-#quick-view-modal .modal-content .aa-product-view-slider .simpleLens-thumbnails-container {
-  text-align: center;
-}
-#quick-view-modal .modal-content .aa-product-view-content {
-  padding-right: 10px;
-  padding-bottom: 10px;
-}
-#quick-view-modal .modal-content .aa-product-view-content h3 {
-  font-weight: bold;
-  margin-top: 0px;
-  margin-bottom: 5px;
-}
-#quick-view-modal .modal-content .aa-product-view-content h4 {
-  font-weight: bold;
-  letter-spacing: 1px;
-}
-#quick-view-modal .modal-content .aa-product-view-content > p {
-  font-size: 15px;
-  letter-spacing: 0.5px;
-  margin-bottom: 14px;
-}
-#quick-view-modal .modal-content .aa-product-view-content .aa-price-block {
-  position: relative;
-  margin-bottom: 5px;
-}
-#quick-view-modal .modal-content .aa-product-view-content .aa-price-block .aa-product-view-price {
-  font-size: 18px;
-}
-#quick-view-modal .modal-content .aa-product-view-content .aa-price-block .aa-product-avilability {
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-#quick-view-modal .modal-content .aa-product-view-content .aa-prod-view-size a {
-  border: 1px solid #ddd;
-  display: inline-block;
-  font-size: 14px;
-  letter-spacing: 0.5px;
-  margin-bottom: 5px;
-  margin-right: 8px;
-  padding: 5px 10px;
-  -webkit-transition: all 0.5s;
-  -moz-transition: all 0.5s;
-  -ms-transition: all 0.5s;
-  -o-transition: all 0.5s;
-  transition: all 0.5s;
-}
-#quick-view-modal .modal-content .aa-product-view-content .aa-prod-quantity {
-  margin-top: 10px;
-}
-#quick-view-modal .modal-content .aa-product-view-content .aa-prod-quantity form {
-  display: inline-block;
-}
-#quick-view-modal .modal-content .aa-product-view-content .aa-prod-quantity form select {
-  height: 25px;
-  width: 40px;
-}
-#quick-view-modal .modal-content .aa-product-view-content .aa-prod-quantity .aa-prod-category {
-  display: inline-block;
-  margin-left: 15px;
-}
-#quick-view-modal .modal-content .aa-product-view-content .aa-prod-quantity .aa-prod-category a {
-  font-size: 14px;
-}
-#quick-view-modal .modal-content .aa-product-view-content .aa-prod-view-bottom {
-  border-top: 1px solid #ddd;
-  margin-top: 10px;
-  padding-top: 10px;
-}
-#quick-view-modal .modal-content .aa-product-view-content .aa-prod-view-bottom a:last-child {
-  margin-left: 10px;
-}
-
 /*==================
   BANNER SECTION
 ====================*/
@@ -2138,16 +2036,11 @@ img {
 #aa-product-details .aa-product-details-area .aa-product-details-content .aa-product-view-content .aa-prod-quantity form {
   display: inline-block;
 }
-#aa-product-details .aa-product-details-area .aa-product-details-content .aa-product-view-content .aa-prod-quantity form select {
-  height: 25px;
-  width: 40px;
+#aa-product-details .aa-product-details-area .aa-product-details-content .aa-product-view-content .aa-prod-quantity form input {
+    padding: 5px;
 }
-#aa-product-details .aa-product-details-area .aa-product-details-content .aa-product-view-content .aa-prod-quantity .aa-prod-category {
-  display: inline-block;
-  margin-left: 15px;
-}
-#aa-product-details .aa-product-details-area .aa-product-details-content .aa-product-view-content .aa-prod-quantity .aa-prod-category a {
-  font-size: 14px;
+#aa-product-details .aa-product-details-area .aa-product-details-content .aa-product-view-content .aa-prod-category a {
+    color: red
 }
 #aa-product-details .aa-product-details-area .aa-product-details-content .aa-product-view-content .aa-prod-view-bottom {
   border-top: 1px solid #ddd;
@@ -2185,24 +2078,9 @@ img {
   float: left;
   width: 100%;
   margin-top: 20px;
-  border-top: 1px solid #ccc;
 }
 #aa-product-details .aa-product-details-area .aa-product-details-bottom .nav-tabs {
   text-align: center;
-}
-#aa-product-details .aa-product-details-area .aa-product-details-bottom .nav-tabs li {
-  display: inline-block;
-  float: none;
-  margin-bottom: 0px;
-}
-#aa-product-details .aa-product-details-area .aa-product-details-bottom .nav-tabs li a {
-  border-radius: 0;
-  border: none;
-  font-size: 18px;
-}
-#aa-product-details .aa-product-details-area .aa-product-details-bottom .nav-tabs li a:hover, #aa-product-details .aa-product-details-area .aa-product-details-bottom .nav-tabs li a:focus {
-  background-color: transparent;
-  border: none;
 }
 #aa-product-details .aa-product-details-area .aa-product-details-bottom #description {
   padding: 20px 10px;
@@ -2215,71 +2093,6 @@ img {
   color: #555;
   list-style: outside none square;
   margin-top: 5px;
-}
-#aa-product-details .aa-product-details-area .aa-product-details-bottom .aa-product-review-area {
-  display: inline;
-  float: left;
-  padding: 20px 0;
-  width: 100%;
-}
-#aa-product-details .aa-product-details-area .aa-product-details-bottom .aa-product-review-area > h4 {
-  font-size: 25px;
-  margin-bottom: 20px;
-  text-transform: uppercase;
-}
-#aa-product-details .aa-product-details-area .aa-product-details-bottom .aa-product-review-area .aa-review-nav li {
-  margin-bottom: 20px;
-}
-#aa-product-details .aa-product-details-area .aa-product-details-bottom .aa-product-review-area .aa-review-nav li .media-object {
-  display: block;
-  height: 60px;
-  width: 60px;
-}
-#aa-product-details .aa-product-details-area .aa-product-details-bottom .aa-product-review-area .aa-review-nav li .media-body {
-  border: 1px solid #ccc;
-  padding: 10px;
-}
-#aa-product-details .aa-product-details-area .aa-product-details-bottom .aa-product-review-area .aa-review-nav li .media-body .media-heading {
-  font-size: 16px;
-}
-#aa-product-details .aa-product-details-area .aa-product-details-bottom .aa-product-review-area .aa-review-nav li .media-body .aa-product-rating span {
-  color: #ff6600;
-}
-#aa-product-details .aa-product-details-area .aa-product-details-bottom .aa-review-form {
-  margin-top: 20px;
-}
-#aa-product-details .aa-product-details-area .aa-product-details-bottom .aa-review-form label {
-  color: #555;
-}
-#aa-product-details .aa-product-details-area .aa-product-details-bottom .aa-review-form textarea {
-  height: 200px;
-}
-#aa-product-details .aa-product-details-area .aa-product-details-bottom .aa-review-form input {
-  height: 45px;
-}
-#aa-product-details .aa-product-details-area .aa-product-details-bottom .aa-review-form .aa-review-submit {
-  border-radius: 0;
-  font-size: 18px;
-  height: 45px;
-  text-transform: uppercase;
-  width: 100%;
-  color: #fff;
-  -webkit-transition: all 0.5s;
-  -moz-transition: all 0.5s;
-  -ms-transition: all 0.5s;
-  -o-transition: all 0.5s;
-  transition: all 0.5s;
-}
-#aa-product-details .aa-product-details-area .aa-product-details-bottom .aa-review-form .aa-review-submit:hover {
-  background-color: #000;
-  border-color: #000;
-}
-#aa-product-details .aa-product-details-area .aa-product-details-bottom .aa-review-form .form-control {
-  box-shadow: none;
-  border-radius: 0;
-}
-#aa-product-details .aa-product-details-area .aa-product-details-bottom .aa-review-form .form-control:focus {
-  box-shadow: none;
 }
 #aa-product-details .aa-product-details-area .aa-product-related-item {
   display: inline;
@@ -4036,10 +3849,6 @@ img {
   #quick-view-modal .modal-content .aa-product-view-content {
     text-align: center;
     margin-top: 10px;
-  }
-
-  #quick-view-modal .modal-content .aa-product-view-content .aa-price-block {
-    text-align: left;
   }
 
   #quick-view-modal .modal-content .aa-product-view-content h3 {

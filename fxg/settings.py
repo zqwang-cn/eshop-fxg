@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'account',
+    'shop',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -135,6 +137,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS=(
     os.path.join(BASE_DIR, 'static'),
 )
+
+MEDIA_URL='/media/'
+MEDIA_ROOT='/home/wang/fxgimage/'
 
 LOGIN_URL='/account/signin'
 

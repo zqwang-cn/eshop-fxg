@@ -21,6 +21,8 @@
 
 .simpleLens-big-image {
     max-width: 100%;
+    width: 250px;
+    height: 300px;
 }
 
 .simpleLens-lens-image {
