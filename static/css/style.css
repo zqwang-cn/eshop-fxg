@@ -1219,13 +1219,13 @@ img {
   color: #fff;
   font-size: 15px;
 }
-.aa-product-catg li .aa-sale {
+.aa-product-catg li .aa-SALE {
   background-color: #008000;
 }
-.aa-product-catg li .aa-sold-out {
+.aa-product-catg li .aa-SOLDOUT {
   background-color: #FF0000;
 }
-.aa-product-catg li .aa-hot {
+.aa-product-catg li .aa-HOT {
   background-color: #ff6600;
 }
 

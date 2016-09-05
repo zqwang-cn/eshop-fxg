@@ -6,13 +6,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">    
         <title>Daily Shop | Product Detail</title>
 
-        {% include 'css.html' %}
+        {% include 'include/css.html' %}
 
     </head>
     <body>  
-        {% include 'header.html' %}
+        {% include 'include/header.html' %}
 
-        {% include 'menu.html' %}
+        {% include 'include/menu.html' %}
 
         <!-- product category -->
         <section id="aa-product-details">
@@ -28,12 +28,15 @@
                                             <div id="demo-1" class="simpleLens-gallery-container">
                                                 <div class="simpleLens-container">
                                                     <div class="simpleLens-big-image-container">
-                                                        <a data-lens-image="/static/img/view-slider/large/polo-shirt-1.png" class="simpleLens-lens-image">
-                                                            <img src="{{ image.img.url }}" class="simpleLens-big-image" width="250px" height="300px">
+                                                        <a data-lens-image="{{ item.thumb.url }}" class="simpleLens-lens-image">
+                                                            <img src="{{ item.thumb.url }}" class="simpleLens-big-image" width="250px" height="300px">
                                                         </a>
                                                     </div>
                                                 </div>
                                                 <div class="simpleLens-thumbnails-container">
+                                                    <a data-big-image="{{ item.thumb.url }}" data-lens-image="{{ item.thumb.url }}" class="simpleLens-thumbnail-wrapper" href="#">
+                                                        <img src="{{ item.thumb.url }}" width="45px" height="55px">
+                                                    </a>                                    
                                                     {% for image in images %}
                                                     <a data-big-image="{{ image.img.url }}" data-lens-image="{{ image.img.url }}" class="simpleLens-thumbnail-wrapper" href="#">
                                                         <img src="{{ image.img.url }}" width="45px" height="55px">
@@ -129,9 +132,9 @@
         </section>
         <!-- / product category -->
 
-        {% include 'footer.html' %}
+        {% include 'include/footer.html' %}
 
-        {% include 'js.html' %}
+        {% include 'include/js.html' %}
 
     </body>
 </html>

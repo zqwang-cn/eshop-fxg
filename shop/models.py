@@ -14,6 +14,7 @@ class Brand(models.Model):
 class Category(models.Model):
     name=models.CharField(max_length=20)
     desc=models.TextField()
+    super=models.ForeignKey('self',null=True,blank=True,default=None)
     def __unicode__(self):
         return self.name
 
@@ -23,6 +24,7 @@ class Item(models.Model):
     desc=models.TextField()
     brand=models.ForeignKey(Brand)
     category=models.ForeignKey(Category)
+    thumb=models.ImageField(upload_to='thumbs/')
     status=models.CharField(max_length=10,default='NORMAL',choices=(
         ('NORMAL','正常'),
         ('SALE','促销'),
