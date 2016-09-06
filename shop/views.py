@@ -5,11 +5,15 @@ from models import Item,Image,Category
 def index(request):
     return render(request,'index.html')
 
-def all(request):
-    orderby=request.GET.get('orderby','id')
+def url_replace(parmas,key,value):
+    params[key]=value
+    return params.urlencode()
+
+def list(request):
+    params=request.GET.copy()
+    orderby=params.get('orderby','id')
     items=Item.objects.order_by(orderby)
-    categories=Category.objects.all()
-    return render(request,'all.html',{'items':items,'categories':categories})
+    return render(request,'list.html',{'items':items,"url_replace":url_replace})
 
 def item(request,id):
     id=int(id)
