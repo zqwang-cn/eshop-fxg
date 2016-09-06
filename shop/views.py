@@ -1,11 +1,15 @@
 from django.shortcuts import render,get_object_or_404
 from models import Item,Image,Category
+from django import template
+
+register = template.Library()
 
 # Create your views here.
 def index(request):
     return render(request,'index.html')
 
-def url_replace(parmas,key,value):
+@register.simple_tag
+def url_replace(params,key,value):
     params[key]=value
     return params.urlencode()
 
@@ -13,7 +17,7 @@ def list(request):
     params=request.GET.copy()
     orderby=params.get('orderby','id')
     items=Item.objects.order_by(orderby)
-    return render(request,'list.html',{'items':items,"url_replace":url_replace})
+    return render(request,'list.html',{'items':items,'url_replace':url_replace,'params':params})
 
 def item(request,id):
     id=int(id)

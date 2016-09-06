@@ -54,7 +54,12 @@
                                 <li class="hidden-xs"><a href="wishlist.html">Wishlist</a></li>
                                 <li class="hidden-xs"><a href="cart.html">My Cart</a></li>
                                 <li class="hidden-xs"><a href="checkout.html">Checkout</a></li>
-                                <li class="hidden-xs"><a href="/account/signin">登录</a></li>
+                                {% if user.is_authenticated %}
+                                <li class="hidden-xs"><a href="{% url 'account.signout' %}">注销</a></li>
+                                {% else %}
+                                <li class="hidden-xs"><a href="{% url 'account.signin' %}">登录</a></li>
+                                <li class="hidden-xs"><a href="{% url 'account.signup' %}">注册</a></li>
+                                {% endif %}
                             </ul>
                         </div>
                     </div>

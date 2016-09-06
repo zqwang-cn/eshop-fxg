@@ -26,9 +26,9 @@
               <div class="aa-product-catg-head-left">
                 <form action="" class="aa-sort-form">
                   <label for="">排序方式</label>
-                  <select name="">
-                    <option value="1" selected="Default">默认</option>
-                    <option value="2">价格</option>
+                  <select name="" onchange="url_change('orderby',this.value)";>
+                    <option value="id" selected="Default">默认</option>
+                    <option value="-id">价格</option>
                     <option value="3">销量</option>
                     <option value="4">促销</option>
                   </select>
