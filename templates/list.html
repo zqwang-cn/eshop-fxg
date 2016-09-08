@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">    
-    <title>Daily Shop | Product</title>
+    <title>枫香阁进口食品店</title>
     
     {% include 'include/css.html' %}
 
@@ -24,23 +24,32 @@
           <div class="aa-product-catg-content">
             <div class="aa-product-catg-head">
               <div class="aa-product-catg-head-left">
-                <form action="" class="aa-sort-form">
+                <div class="aa-sort-form">
+                  <label for="">分类</label>
+                  <select id="sel-category" class="param-change">
+                    <option value="">全部</option>
+                    {% for category in categories %}
+                    <option value="{{ category.id }}" {% if category.id == selected_category %}selected{% endif %}>{{ category.name }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                <div class="aa-sort-form">
+                  <label for="">品牌</label>
+                  <select id="sel-brand" class="param-change">
+                    <option value="">全部</option>
+                    {% for brand in brands %}
+                    <option value="{{ brand.id }}" {% if brand.id == selected_brand %}selected{% endif %}>{{ brand.name }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                <div class="aa-sort-form">
                   <label for="">排序方式</label>
-                  <select name="" onchange="url_change('orderby',this.value)";>
-                    <option value="id" selected="Default">默认</option>
-                    <option value="-id">价格</option>
-                    <option value="3">销量</option>
-                    <option value="4">促销</option>
+                  <select id="sel-orderby" class="param-change">
+                      <option value="" {% if orderby == "id" %}selected{% endif %}>默认</option>
+                      <option value="price" {% if orderby == "price" %}selected{% endif %}>价格从低到高</option>
+                      <option value="-price" {% if orderby == "-price" %}selected{% endif %}>价格从高到低</option>
                   </select>
-                </form>
-                <form action="" class="aa-show-form">
-                  <label for="">每页显示数量</label>
-                  <select name="">
-                    <option value="1" selected="12">12</option>
-                    <option value="2">24</option>
-                    <option value="3">36</option>
-                  </select>
-                </form>
+                </div>
               </div>
               <div class="aa-product-catg-head-right">
                 <a id="grid-catg" href="#"><span class="fa fa-th"></span></a>
@@ -77,11 +86,13 @@
                       <span aria-hidden="true">&laquo;</span>
                     </a>
                   </li>
-                  <li><a href="#">1</a></li>
-                  <li><a href="#">2</a></li>
-                  <li><a href="#">3</a></li>
-                  <li><a href="#">4</a></li>
-                  <li><a href="#">5</a></li>
+                  {% for i in left %}
+                  <li><a href={{ page_url }}{{ i }}>{{ i }}</a></li>
+                  {% endfor %}
+                  <li class="active"><a>{{ mid }}</a></li>
+                  {% for i in right %}
+                  <li><a href={{ page_url }}{{ i }}>{{ i }}</a></li>
+                  {% endfor %}
                   <li>
                     <a href="#" aria-label="Next">
                       <span aria-hidden="true">&raquo;</span>

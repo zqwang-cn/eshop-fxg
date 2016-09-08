@@ -354,6 +354,23 @@ jQuery(function($){
         // instead of a settings object
       ]
     }); 
+
+    jQuery('.param-change').change(function(){
+        keys=['category','brand','orderby'];
+        ids=["#sel-category","#sel-brand","#sel-orderby"];
+        querystring="?";
+        for(var i=0;i<ids.length;i++){
+            key=keys[i];
+            value=jQuery(ids[i]).val();
+            if(value){
+                querystring+='&'+key+'='+value;
+            }
+        }
+        if(querystring=="?")
+            location.href=location.pathname
+        else
+            location.href=location.pathname+querystring
+    });
     
 });
 
