@@ -62,7 +62,7 @@
                 {% for item in items %}
                 <li>
                   <figure>
-                      <a class="aa-product-img" href="{% url 'shop.item' item.id %}"><img src="{{ item.thumb.url }}" alt="{{ item.name }}" width="250px" height="300px"></a>
+                      <a class="aa-product-img" href="{% url 'shop.item' item.id %}"><img src="{{ item.thumb.url }}" alt="{{ item.name }}"></a>
                     <a class="aa-add-card-btn"href="#"><span class="fa fa-shopping-cart"></span>添加到购物车</a>
                     <figcaption>
                     <h4 class="aa-product-title"><a href="{% url 'shop.item' item.id %}">{{ item.name }}</a></h4>
