@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Brand(models.Model):
@@ -39,3 +40,8 @@ class Image(models.Model):
     img=models.ImageField(upload_to='images/')
     def __unicode__(self):
         return self.item.name
+
+class CartItem(models.Model):
+    user=models.ForeignKey(User)
+    item=models.ForeignKey(Item)
+    num=models.IntegerField()

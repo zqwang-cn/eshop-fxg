@@ -1,9 +1,14 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404,redirect
 from django.core.urlresolvers import reverse
-from models import Item,Image,Category,Brand
+from models import Item,Image,Category,Brand,CartItem
+from django.http import HttpResponse
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+def error404(request):
+    return render(request,'404.html')
+
 def index(request):
     return render(request,'index.html')
 
@@ -66,5 +71,57 @@ def item(request,id):
     images=Image.objects.filter(item=item)
     return render(request,'item.html',{'item':item,'images':images})
 
-def error404(request):
-    return render(request,'404.html')
+def add(request):
+    user=request.user
+    if not user.is_authenticated():
+        return HttpResponse("not signed in")
+    id=int(request.GET.get('id'))
+    num=int(request.GET.get('num'))
+    if num<1 or num>99:
+        return HttpResponse("invalid num")
+    item=get_object_or_404(Item,id=id)
+    try:
+        cartitem=CartItem.objects.get(user=user,item=item)
+        cartitem.num=cartitem.num+num
+        if cartitem.num>99:
+            cartitem.num=99
+        cartitem.save()
+    except:
+        cartitem=CartItem()
+        cartitem.user=user
+        cartitem.item=item
+        cartitem.num=num
+        cartitem.save()
+    return HttpResponse("success")
+
+def delete(request):
+    user=request.user
+    if not user.is_authenticated():
+        return HttpResponse("not signed in")
+    id=int(request.GET.get('id'))
+    cartitem=get_object_or_404(CartItem,id=id)
+    cartitem.delete()
+    return HttpResponse("success")
+
+def update(request):
+    user=request.user
+    if not user.is_authenticated():
+        return HttpResponse("not signed in")
+    for k,v in request.GET.items():
+        id=int(k)
+        num=int(v)
+        if num<1 or num>99:
+            return HttpResponse("invalid num")
+        cartitem=get_object_or_404(CartItem,id=id)
+        cartitem.num=num
+        cartitem.save()
+    return HttpResponse("success")
+
+@login_required
+def cart(request):
+    cartitems=CartItem.objects.filter(user=request.user)
+    total=0
+    for cartitem in cartitems:
+        cartitem.total=cartitem.item.price*cartitem.num
+        total+=cartitem.total
+    return render(request,'cart.html',{ 'cartitems':cartitems,'total':total })

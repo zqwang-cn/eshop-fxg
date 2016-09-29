@@ -355,6 +355,7 @@ jQuery(function($){
       ]
     }); 
 
+    /*custom js*/
     jQuery('.param-change').change(function(){
         keys=['category','brand','orderby'];
         ids=["#sel-category","#sel-brand","#sel-orderby"];
@@ -371,6 +372,87 @@ jQuery(function($){
         else
             location.href=location.pathname+querystring
     });
+
+    jQuery('.cart-add').click(function(){
+        id=jQuery('#id').val();
+        num=jQuery('#num').val();
+        url="/shop/add?id="+id+"&num="+num;
+        jQuery.get(url,{},function(data){
+            if(data=="success"){
+                alert("成功");
+            }
+            else{
+                alert(data);
+            }
+        });
+        return false;
+    });
+
+    jQuery('.cart-buy').click(function(){
+        id=jQuery('#id').val();
+        num=jQuery('#num').val();
+        url="/shop/add?id="+id+"&num="+num;
+        jQuery.get(url,{},function(data){
+            if(data=="success"){
+                alert("成功");
+            }
+            else{
+                alert(data);
+            }
+        });
+    });
+
+    jQuery('.cart-del').click(function(){
+        if(confirm("确认删除？")){
+           id=jQuery(this).data('id');
+           url="/shop/delete?id="+id;
+           jQuery.get(url,{},function(data){
+                if(data=="success"){
+                    location.reload('true');
+                }
+                else{
+                    alert(data);
+                }
+            });
+        }
+        return false;
+    });
+
+    jQuery('.cart-update').click(function(){
+        data={};
+        jQuery('.cart-item').each(function(){
+            id=jQuery(this).data('id');
+            num=jQuery(this).val();
+            data[id]=num;
+        });
+        url='/shop/update';
+        jQuery.get(url,data,function(data){
+            if(data=="success"){
+                alert("成功");
+            }
+            else{
+                alert(data);
+            }
+        });
+    });
     
+    jQuery('.cart-order').click(function(){
+        data={};
+        jQuery('.cart-item').each(function(){
+            id=jQuery(this).data('id');
+            num=jQuery(this).val();
+            data[id]=num;
+        });
+        url='/shop/update';
+        jQuery.get(url,data,function(data){
+            if(data=="success"){
+                alert("成功");
+            }
+            else{
+                alert(data);
+            }
+        });
+    });
+
 });
 

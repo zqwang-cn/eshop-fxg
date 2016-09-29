@@ -50,19 +50,22 @@
                                     <div class="col-md-7 col-sm-7 col-xs-12">
                                         <div class="aa-product-view-content">
                                             <h3>{{ item.name }}</h3>
-                                                <p>价格：￥{{ item.price }}</p>
-                                                <p>品牌：{{ item.brand.name }}</p>
+                                                <p class="aa-prod-price">￥{{ item.price }}</p>
                                                 <p class="aa-prod-category">
-                                                分类：<a href="#">{{ item.category.name }}</a>
+                                                品牌：<a href="{% url 'shop.list' %}?brand={{ item.brand.id }}">{{ item.brand.name }}</a>
+                                                </p>
+                                                <p class="aa-prod-category">
+                                                分类：<a href="{% url 'shop.list' %}?category={{ item.category.id }}">{{ item.category.name }}</a>
                                                 </p>
                                             <div class="aa-prod-quantity">
                                                 <form action="">
-                                                    购买数量：<input type="number" value=1 min=1 max=99>
+                                                    <input id="id" type="hidden" value="{{ item.id }}">
+                                                    购买数量：<input id="num" type="number" value=1 min=1 max=99>
                                                 </form>
                                             </div>
                                             <div class="aa-prod-view-bottom">
-                                                <a class="aa-add-to-cart-btn" href="#">立即购买</a>
-                                                <a class="aa-add-to-cart-btn" href="#">添加到购物车</a>
+                                                <a class="aa-add-to-cart-btn cart-buy" href="{% url 'shop.cart' %}">立即购买</a>
+                                                <a class="aa-add-to-cart-btn cart-add" href="">添加到购物车</a>
                                             </div>
                                         </div>
                                     </div>

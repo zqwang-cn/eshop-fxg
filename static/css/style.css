@@ -2050,7 +2050,11 @@ img {
     padding: 5px;
 }
 #aa-product-details .aa-product-details-area .aa-product-details-content .aa-product-view-content .aa-prod-category a {
-    color: red
+    color: blue;
+}
+#aa-product-details .aa-product-details-area .aa-product-details-content .aa-product-view-content .aa-prod-price {
+    color: red;
+    font-size: 30px;
 }
 #aa-product-details .aa-product-details-area .aa-product-details-content .aa-product-view-content .aa-prod-view-bottom {
   border-top: 1px solid #ddd;

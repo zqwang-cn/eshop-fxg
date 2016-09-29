@@ -4,7 +4,6 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth import authenticate,login,logout
 from forms import SignupForm,SigninForm
 from django.contrib.auth.models import User
-import random
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
