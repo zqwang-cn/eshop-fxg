@@ -32,6 +32,7 @@ jQuery(function($){
   /*  1. CARTBOX 
   /* ----------------------------------------------------------- */
     
+ /*
      jQuery(".aa-cartbox").hover(function(){
       jQuery(this).find(".aa-cartbox-summary").fadeIn(500);
     }
@@ -39,6 +40,7 @@ jQuery(function($){
           jQuery(this).find(".aa-cartbox-summary").fadeOut(500);
       }
      );   
+ */
   
   /* ----------------------------------------------------------- */
   /*  2. TOOLTIP
@@ -376,6 +378,21 @@ jQuery(function($){
     jQuery('.cart-add').click(function(){
         id=jQuery('#id').val();
         num=jQuery('#num').val();
+        url="/shop/add?id="+id+"&num="+num;
+        jQuery.get(url,{},function(data){
+            if(data=="success"){
+                alert("成功");
+            }
+            else{
+                alert(data);
+            }
+        });
+        return false;
+    });
+
+    jQuery('.cart-add1').click(function(){
+        id=jQuery(this).data('id');
+        num=1;
         url="/shop/add?id="+id+"&num="+num;
         jQuery.get(url,{},function(data){
             if(data=="success"){

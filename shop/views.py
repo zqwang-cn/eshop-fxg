@@ -1,9 +1,10 @@
-from django.shortcuts import render,get_object_or_404,redirect
+from django.shortcuts import render,get_object_or_404,redirect,render_to_response
 from django.core.urlresolvers import reverse
 from models import Item,Image,Category,Brand,CartItem
 from django.http import HttpResponse
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 from django.contrib.auth.decorators import login_required
+import json
 
 # Create your views here.
 def error404(request):
@@ -13,9 +14,6 @@ def index(request):
     return render(request,'index.html')
 
 def list(request):
-    page_item_num=3
-    page_range_num=2
-
     try:
         selected_category=int(request.GET.get('category',-1))
         selected_brand=int(request.GET.get('brand',-1))
@@ -32,6 +30,8 @@ def list(request):
     orderby=request.GET.get('orderby','id')
     all_items=all_items.order_by(orderby)
 
+    page_item_num=3
+    page_range_num=2
     paginator=Paginator(all_items,page_item_num)
     page=request.GET.get('page')
     try:
@@ -50,6 +50,21 @@ def list(request):
     qs=params.urlencode()
     page_url=reverse('shop.list')+'?'+qs+'&page='
 
+    history_items=[]
+    try:
+        s=request.COOKIES.get('history')
+        if s:
+            history=json.loads(s)
+            for id in history:
+                try:
+                    item=Item.objects.get(id=id)
+                    history_items.append(item)
+                except:
+                    pass
+        history_items.reverse()
+    except:
+        pass
+
     categories=Category.objects.all()
     brands=Brand.objects.all()
     return render(request,'list.html',{
@@ -63,13 +78,32 @@ def list(request):
         'left':left,
         'right':right,
         'page_url':page_url,
+        'history_items':history_items,
     })
 
 def item(request,id):
     id=int(id)
     item=get_object_or_404(Item,id=id)
     images=Image.objects.filter(item=item)
-    return render(request,'item.html',{'item':item,'images':images})
+    #return render(request,'item.html',{'item':item,'images':images})
+    response=render(request,'item.html',{'item':item,'images':images})
+
+    try:
+        history=request.COOKIES.get('history')
+        if history:
+            history=json.loads(history)
+        else:
+            history=[]
+        if id in history:
+            history.remove(id)
+        history.append(id)
+        if len(history)>3:
+            del history[0]
+        history=json.dumps(history)
+        response.set_cookie('history',history)
+    except:
+        response.set_cookie('history','[]')
+    return response
 
 def add(request):
     user=request.user

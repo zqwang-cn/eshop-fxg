@@ -63,10 +63,14 @@
                 <li>
                   <figure>
                       <a class="aa-product-img" href="{% url 'shop.item' item.id %}"><img src="{{ item.thumb.url }}" alt="{{ item.name }}"></a>
-                    <a class="aa-add-card-btn"href="#"><span class="fa fa-shopping-cart"></span>添加到购物车</a>
+                      <a class="aa-add-card-btn cart-add1" data-id="{{item.id}}" href=""><span class="fa fa-shopping-cart"></span>添加到购物车</a>
                     <figcaption>
                     <h4 class="aa-product-title"><a href="{% url 'shop.item' item.id %}">{{ item.name }}</a></h4>
-                    <span class="aa-product-price">￥{{ item.price }}</span><span class="aa-product-price"><del>$65.50</del></span>
+                    {% if item.status == 'SALE' %}
+                    <span class="aa-product-price">￥{{ item.price }}</span><span class="aa-product-price"><del>￥{{ item.oldprice }}</del></span>
+                    {% else %}
+                    <span class="aa-product-price">￥{{ item.price }}</span>
+                    {% endif %}
                     <p class="aa-product-descrip">{{ item.desc }}</p>
                     </figcaption>
                   </figure>                         
@@ -161,59 +165,18 @@
             </div>-->
             <!-- single sidebar -->
             <div class="aa-sidebar-widget">
-              <h3>Recently Views</h3>
+              <h3>浏览历史</h3>
               <div class="aa-recently-views">
                 <ul>
+                  {% for item in history_items %}
                   <li>
-                    <a href="#" class="aa-cartbox-img"><img alt="img" src="img/woman-small-2.jpg"></a>
+                    <a href="{% url 'shop.item' item.id %}" class="aa-cartbox-img"><img src="{{ item.thumb.url }}" alt="{{ item.name }}"></a>
                     <div class="aa-cartbox-info">
-                      <h4><a href="#">Product Name</a></h4>
-                      <p>1 x $250</p>
+                        <h4><a href="#">{{item.name}}</a></h4>
+                        <p>￥{{item.price}}</p>
                     </div>                    
                   </li>
-                  <li>
-                    <a href="#" class="aa-cartbox-img"><img alt="img" src="img/woman-small-1.jpg"></a>
-                    <div class="aa-cartbox-info">
-                      <h4><a href="#">Product Name</a></h4>
-                      <p>1 x $250</p>
-                    </div>                    
-                  </li>
-                   <li>
-                    <a href="#" class="aa-cartbox-img"><img alt="img" src="img/woman-small-2.jpg"></a>
-                    <div class="aa-cartbox-info">
-                      <h4><a href="#">Product Name</a></h4>
-                      <p>1 x $250</p>
-                    </div>                    
-                  </li>                                      
-                </ul>
-              </div>                            
-            </div>
-            <!-- single sidebar -->
-            <div class="aa-sidebar-widget">
-              <h3>Top Rated Products</h3>
-              <div class="aa-recently-views">
-                <ul>
-                  <li>
-                    <a href="#" class="aa-cartbox-img"><img alt="img" src="img/woman-small-2.jpg"></a>
-                    <div class="aa-cartbox-info">
-                      <h4><a href="#">Product Name</a></h4>
-                      <p>1 x $250</p>
-                    </div>                    
-                  </li>
-                  <li>
-                    <a href="#" class="aa-cartbox-img"><img alt="img" src="img/woman-small-1.jpg"></a>
-                    <div class="aa-cartbox-info">
-                      <h4><a href="#">Product Name</a></h4>
-                      <p>1 x $250</p>
-                    </div>                    
-                  </li>
-                   <li>
-                    <a href="#" class="aa-cartbox-img"><img alt="img" src="img/woman-small-2.jpg"></a>
-                    <div class="aa-cartbox-info">
-                      <h4><a href="#">Product Name</a></h4>
-                      <p>1 x $250</p>
-                    </div>                    
-                  </li>                                      
+                  {% endfor %}
                 </ul>
               </div>                            
             </div>
